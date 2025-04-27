@@ -47,10 +47,13 @@
             <span class='icon-field'></i></span> Candidates
         </a>
         <a href="index.php?page=casting_votes" class="nav-item bg-primary nav-casting_votes">
-            <span class='icon-field'></i></span> Casting Votes
+            <span class='icon-field'></i></span> Votes
         </a>
 		<a href="index.php?page=voters" class="nav-item bg-primary nav-voters">
             <span class='icon-field'></span> Voters
+        </a>
+        <a href="index.php?page=ballot_position" class="nav-item bg-primary nav-ballot_position">
+            <span class='icon-field'></span> Ballot Positions
         </a>
         <?php if($_SESSION['login_type'] == 1): ?>
             <a href="index.php?page=users" class="nav-item bg-primary nav-users">

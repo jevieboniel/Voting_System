@@ -103,9 +103,6 @@ a.custom-menu-list span.icon{
 			<div class="col-lg-12">
 			<div class="card ">
 				<div class="card-body">
-					<div class="text-center">
-						<h1><b><?php echo $title ?></b></h1>
-					</div>
 					<?php 
 					$cats = $conn->query("SELECT * FROM category_list where id in (SELECT category_id from voting_opt where voting_id = '".$id."' )");
 					while($row = $cats->fetch_assoc()):

@@ -34,7 +34,7 @@
                     <table class="table table-striped table-bordered mb-0">
                         <thead class="thead-dark">
                             <tr>
-                                <th class="text-center" style="width: 10%;">#</th>
+                                <th class="text-center" style="width: 10%;">No.</th>
                                 <th class="text-center">Category</th>
                                 <th class="text-center" style="width: 25%;">Action</th>
                             </tr>
