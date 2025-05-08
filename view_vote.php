@@ -40,7 +40,7 @@
 	<div class="col-lg-12">
 		<div class="row">
 			<div class="col-md-12">
-				<a class="btn btn-primary btn-sm  col-md-2 float-right" href="voting.php?page=home">View Poll</a>
+				<a class="btn btn-primary btn-sm  col-md-2 float-right" href="voting.php?page=dashboard">View Poll</a>
 			</div>
 		</div>
 		<div class="card">
