@@ -108,6 +108,8 @@
 													<p><b>Year:</b> <?php echo $candidate['year'] ?? 'N/A'; ?></p>
 													<p><b>Partylist:</b> <?php echo $candidate['partylist'] ?? 'Independent'; ?></p>
 													<p><b>Block:</b> <?php echo $candidate['block_no'] ?? 'N/A'; ?></p>
+													<p><b><?php echo $candidate['positions'] ?? 'N/A'; ?></b></p>
+													
 												</div>
 											</div>
 										</div>

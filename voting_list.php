@@ -2,7 +2,7 @@
 
 <style>
     body {
-        background-color: lightgray; /* Softer blue background */
+        background-color: lightgray;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -82,7 +82,6 @@
         border-radius: 0.5rem;
     }
 
-    /* Styling the title button */
     .table td button.btn-title {
         background-color: #f8f9fa;
         border: 1px solid #007bff;
@@ -105,6 +104,8 @@
         color: #fff;
         background-color: red;
         text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 0.5rem;
     }
 
     .table-hover tbody tr:hover {
@@ -118,7 +119,6 @@
     .btn + .btn {
         margin-left: 0.5rem;
     }
-
 </style>
 
 <div class="container-fluid mt-4">
@@ -127,11 +127,10 @@
         <div class="col-md-4 mb-4">
             <form action="" id="manage-voting">
                 <div class="card shadow-sm">
-                    <div class="card-header">Candidates Form</div>
                     <div class="card-body">
                         <input type="hidden" name="id">
                         <div class="form-group">
-                            <label for="title">Position</label>
+                            <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" placeholder="Enter Position" required>
                         </div>
                         <div class="form-group">
@@ -150,14 +149,13 @@
         <!-- Table Panel -->
         <div class="col-md-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-dark text-white">Candidates Position</div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mb-0">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No.</th>
-                                    <th>Position</th>
+                                    <th>Title</th>
                                     <th>Description</th>
                                     <th>Default</th>
                                     <th>Action</th>
@@ -243,8 +241,9 @@
         });
     });
 
+    // Directly call update_default without confirmation
     $('.update_default').click(function(){
-        _conf("Are you sure to set this data as default?","update_default",[$(this).attr('data-id')]);
+        update_default($(this).attr('data-id'));
     });
 
     $('.delete_voting').click(function(){

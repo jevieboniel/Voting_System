@@ -154,40 +154,37 @@ Class Action {
 			return 1;
 	}
 	function save_opt(){
-		extract($_POST);
-		// Adding course and year fields to the data
-		$data = " category_id = '".$category_id."' ";
-		$data .= ", opt_txt = '".$opt_txt."' ";
-		$data .= ", voting_id = '".$voting_id."' ";
-		$data .= ", course = '".$course."' ";  // Add course field
-		$data .= ", year = '".$year."' ";      // Add year field
-		$data .= ", partylist = '".$partylist."' ";
-		$data .= ", block_no = '".$block_no."' ";
-		// Handle image upload if it exists
-		if($_FILES['img']['tmp_name'] != ''){
-			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['img']['name'];
-			$move = move_uploaded_file($_FILES['img']['tmp_name'],'assets/img/'. $fname);
-			$data .= ", image_path = '".$fname."' ";
-			
-			if(!empty($id)){
-				$path = $this->db->query("SELECT * FROM voting_opt where id=".$id)->fetch_array()['image_path'];
-				if(!empty($path)) unlink('assets/img/'.$path);
-			}
-		}
-	
-		// Insert or update the database based on whether the ID exists
-		if(empty($id)){
-			// Insert new record
-			$save = $this->db->query("INSERT INTO voting_opt set ".$data);
-			if($save)
-				return 1;
-		} else {
-			// Update existing record
-			$save = $this->db->query("UPDATE voting_opt set ".$data." where id=".$id);
-			if($save)
-				return 2;
-		}
-	}
+    extract($_POST);
+    $data = " category_id = '".$category_id."' ";
+    $data .= ", opt_txt = '".$opt_txt."' ";
+    $data .= ", voting_id = '".$voting_id."' ";
+    $data .= ", course = '".$course."' ";
+    $data .= ", year = '".$year."' ";
+    $data .= ", partylist = '".$partylist."' ";
+    $data .= ", block_no = '".$block_no."' ";
+    $data .= ", positions = '".$positions."' ";  // <-- Add this line for position
+
+    if($_FILES['img']['tmp_name'] != ''){
+        $fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['img']['name'];
+        $move = move_uploaded_file($_FILES['img']['tmp_name'],'assets/img/'. $fname);
+        $data .= ", image_path = '".$fname."' ";
+        if(!empty($id)){
+            $path = $this->db->query("SELECT * FROM voting_opt where id=".$id)->fetch_array()['image_path'];
+            if(!empty($path)) unlink('assets/img/'.$path);
+        }
+    }
+
+    if(empty($id)){
+        $save = $this->db->query("INSERT INTO voting_opt set ".$data);
+        if($save)
+            return 1;
+    } else {
+        $save = $this->db->query("UPDATE voting_opt set ".$data." where id=".$id);
+        if($save)
+            return 2;
+    }
+}
+
 	
 	function delete_candidate(){
 		extract($_POST);

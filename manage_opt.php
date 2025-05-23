@@ -51,7 +51,7 @@ if(isset($_GET['id'])){
                     <option value="BSCRIM" <?php echo isset($course) && $course == 'BSCRIM' ? 'selected' : '' ?>>Bacheloer of Science in Criminology</option>
                     <option value="BSOA" <?php echo isset($course) && $course == 'BSOA' ? 'selected' : '' ?>>Bacheloer of Science in Office Administration</option>
                     <option value="BEED" <?php echo isset($course) && $course == 'BEED' ? 'selected' : '' ?>>Bacheloer of Science in Education</option>
-                    <option value="BA-COM" <?php echo isset($course) && $course == 'BA-COM' ? 'selected' : '' ?>>Bacheloer of Science in Political</option>
+                    <option value="POL-SCI" <?php echo isset($course) && $course == 'BA-COM' ? 'selected' : '' ?>>Bacheloer of Science in Political</option>
                 </select>
             </div>
 
@@ -82,6 +82,18 @@ if(isset($_GET['id'])){
                     <option value="ASLE" <?php echo (isset($partylist) && $partylist == 'ASLE') ? 'selected' : ''; ?>>ASLE</option>
                     <option value="SVEA" <?php echo (isset($partylist) && $partylist == 'SVEA') ? 'selected' : ''; ?>>SVEA</option>
                 </select>
+
+                <!-- Position Field -->
+<div class="form-group">
+    <label for="positions" class="control-label">Categories</label>
+    <select name="positions" id="positions" class="custom-select browser-default" required>
+        <option value="" disabled <?php echo !isset($positions) ? 'selected' : ''; ?>>Select Category</option>
+        <option value="National" <?php echo isset($positions) && $positions == 'President' ? 'selected' : ''; ?>>National</option>
+        <option value="Provincial" <?php echo isset($positions) && $positions == 'Vice President' ? 'selected' : ''; ?>>Provincial</option>
+        <option value="Municipal" <?php echo isset($positions) && $positions == 'Secretary' ? 'selected' : ''; ?>>Municipal</option>
+    </select>
+</div>
+
         </form>
     </div>
 </div>

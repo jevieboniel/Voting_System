@@ -11,14 +11,11 @@
         <div class="col-md-4"> <!-- Changed from col-md-5 to col-md-4 -->
             <form action="" id="manage-category">
                 <div class="card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Category Form</h5>
-                    </div>
                     <div class="card-body">
                         <input type="hidden" name="id">
                         <div class="form-group">
-                            <label for="category" class="font-weight-bold">Category Name</label>
-                            <input type="text" class="form-control" name="category" id="category" placeholder="Enter Category Name" required>
+                            <label for="category" class="font-weight-bold">Position</label>
+                            <input type="text" class="form-control" name="category" id="category" placeholder="Enter Position" required>
                         </div>
                     </div>
                     <div class="card-footer text-right bg-light">
@@ -32,15 +29,12 @@
         <!-- Category Table Panel -->
         <div class="col-md-8"> <!-- Changed from col-md-7 to col-md-8 -->
             <div class="card shadow-sm border-0">
-                <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0">Category List</h5>
-                </div>
                 <div class="card-body p-0">
                     <table class="table table-striped table-bordered mb-0">
                         <thead class="thead-dark">
                             <tr>
                                 <th class="text-center" style="width: 10%;">No.</th>
-                                <th class="text-center">Category</th>
+                                <th class="text-center">Positions</th>
                                 <th class="text-center" style="width: 25%;">Action</th>
                             </tr>
                         </thead>

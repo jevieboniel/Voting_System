@@ -11,6 +11,9 @@
         padding: 8px;
         min-width: 13vw;
     }
+    .chart-container {
+        height: 350px;
+    }
 </style>
 
 <div class="container-fluid">
@@ -22,15 +25,13 @@
     }
     $votes = $conn->query("SELECT v.*, o.partylist FROM votes v INNER JOIN voting_opt o ON o.id = v.voting_opt_id WHERE v.voting_id = $id");
 
-    // Mapping short partylist names to full names
     $partylist_fullnames = [
         'ASLE' => 'Alliance of Student Leaders',
         'SVEA' => 'Students for Vision & Action',
         'Independent' => 'Independent'
     ];
 
-    // Separate the votes for each partylist
-    $partylist_votes = ['ASLE' => 0, 'SVEA' => 0, 'Independent' => 0]; // Initializing separate votes
+    $partylist_votes = ['ASLE' => 0, 'SVEA' => 0, 'Independent' => 0];
     while($row = $votes->fetch_assoc()){
         $partylist = $row['partylist'] ?? 'Independent';
         if (isset($partylist_votes[$partylist])) {
@@ -38,7 +39,6 @@
         }
     }
 
-    // Prepare the data for Chart.js
     $partylist_labels = json_encode(array_keys($partylist_votes));
     $partylist_counts = json_encode(array_values($partylist_votes));
 ?>
@@ -70,9 +70,11 @@
 <div class="row mt-5">
     <div class="col-md-8 offset-md-2">
         <div class="card">
-            <div class="card-body">
-                <h4><b>Partylist Vote Counts</b></h4>
-                <canvas id="partylistChart" height="100"></canvas>
+            <div class="card-body d-flex justify-content-center align-items-center chart-container">
+                <div>
+                    <h4 class="text-center"><b>Partylist Vote Counts</b></h4>
+                    <canvas id="partylistChart" width="300" height="300" style="display: block; margin: auto;"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -86,34 +88,34 @@
 <script>
 const ctx = document.getElementById('partylistChart').getContext('2d');
 const partylistChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'pie',
     data: {
         labels: <?php echo $partylist_labels; ?>,
         datasets: [{
-            label: 'ASLE Votes',
-            data: [<?php echo $partylist_votes['ASLE']; ?>],
-            backgroundColor: 'rgba(54, 162, 235, 0.7)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }, {
-            label: 'SVEA Votes',
-            data: [<?php echo $partylist_votes['SVEA']; ?>],
-            backgroundColor: 'rgba(255, 206, 86, 0.7)',
-            borderColor: 'rgba(255, 206, 86, 1)',
-            borderWidth: 1
-        }, {
-            label: 'Independent Votes',
-            data: [<?php echo $partylist_votes['Independent']; ?>],
-            backgroundColor: 'rgba(75, 192, 192, 0.7)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            label: 'Vote Counts',
+            data: <?php echo $partylist_counts; ?>,
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.7)',     // ASLE
+                'rgba(255, 206, 86, 0.7)',     // SVEA
+                'rgba(75, 192, 192, 0.7)'      // Independent
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
             borderWidth: 1
         }]
     },
     options: {
-        indexAxis: 'y',
-        scales: {
-            x: {
-                beginAtZero: true
+        responsive: false, // Fixed size
+        plugins: {
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: true,
+                text: 'Partylist Vote Distribution'
             }
         }
     }

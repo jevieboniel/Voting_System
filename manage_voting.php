@@ -228,10 +228,12 @@
                             <div class="text-center">
                                 <large class="text-center"><b><?php echo ucwords($candidate['opt_txt']) ?></b></large>
                                 <div style="font-size: 14px; margin-top: 5px;">
+                                    <p><b>Partylist:</b> <?php echo $candidate['partylist'] ?? 'Independent'; ?></p>
                                     <p><b>Course:</b> <?php echo $candidate['course'] ?? 'N/A'; ?></p>
                                     <p><b>Year:</b> <?php echo $candidate['year'] ?? 'N/A'; ?></p>
-                                    <p><b>Partylist:</b> <?php echo $candidate['partylist'] ?? 'Independent'; ?></p>
                                     <p><b>Block:</b> <?php echo $candidate['block_no'] ?? 'N/A'; ?></p>
+                                    <p><b><?php echo $candidate['positions'] ?? 'N/A'; ?></b></p>
+                                    
                                 </div>
                             </div>
                         </div>

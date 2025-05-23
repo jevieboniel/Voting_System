@@ -76,7 +76,7 @@
                 <span class='icon-field'><i class="fas fa-tachometer-alt"></i></span> Dashboard
             </a>
             <a href="index.php?page=categories" class="nav-item bg-primary nav-categories">
-                <span class='icon-field'><i class="fas fa-list"></i></span> Categories
+                <span class='icon-field'><i class="fas fa-list"></i></span> Positions
             </a>
             <a href="index.php?page=voting_list" class="nav-item bg-primary nav-voting_list nav-manage_voting">
                 <span class='icon-field'><i class="fas fa-users"></i></span> Candidates
