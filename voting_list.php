@@ -131,7 +131,7 @@
                         <input type="hidden" name="id">
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Enter Position" required>
+                            <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>

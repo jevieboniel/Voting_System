@@ -5,7 +5,7 @@
     <title>Dashboard Sidebar</title>
     <style>
         #sidebar {
-            background-color: gray;
+            background-color: blue;
             padding: 10px;
             width: 250px;
             height: 100vh;

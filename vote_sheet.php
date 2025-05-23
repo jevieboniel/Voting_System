@@ -108,8 +108,7 @@
 													<p><b>Year:</b> <?php echo $candidate['year'] ?? 'N/A'; ?></p>
 													<p><b>Partylist:</b> <?php echo $candidate['partylist'] ?? 'Independent'; ?></p>
 													<p><b>Block:</b> <?php echo $candidate['block_no'] ?? 'N/A'; ?></p>
-													<p><b><?php echo $candidate['positions'] ?? 'N/A'; ?></b></p>
-													
+													<large><p><b><?php echo $candidate['positions'] ?? 'N/A'; ?></b></p></large>
 												</div>
 											</div>
 										</div>
@@ -155,8 +154,41 @@
 		});
 	});
 
+	// ✅ Validation before submission
 	$('#manage-vote').submit(function (e) {
 		e.preventDefault();
+
+		let isValid = true;
+		let checkedCategories = new Set();
+		let requiredCategories = new Set();
+
+		// Find required category IDs
+		$('.candidate').each(function () {
+			requiredCategories.add($(this).data('cid'));
+		});
+
+		// Find categories with at least one selection
+		$('input[type="checkbox"]:checked').each(function () {
+			let name = $(this).attr('name');
+			let categoryId = name.match(/opt_id\[(\d+)\]/);
+			if (categoryId && categoryId[1]) {
+				checkedCategories.add(parseInt(categoryId[1]));
+			}
+		});
+
+		// Compare sets
+		requiredCategories.forEach(function (catId) {
+			if (!checkedCategories.has(catId)) {
+				isValid = false;
+			}
+		});
+
+		if (!isValid) {
+			alert_toast("Please select at least one candidate in each category before submitting.", "warning");
+			return false;
+		}
+
+		// Submit via AJAX
 		start_load();
 		$.ajax({
 			url: 'ajax.php?action=submit_vote',
