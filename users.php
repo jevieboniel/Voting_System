@@ -4,7 +4,7 @@ include 'db_connect.php';
 
 <style>
     body {
-        background-color: skyblue; /* Light gray background */
+        background-color: lightgray; /* Light gray background */
     }
     .card {
         background-color: #ffffff; /* White card background */

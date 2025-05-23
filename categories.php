@@ -1,4 +1,9 @@
 <?php include('db_connect.php'); ?>
+<style>
+    body {
+        background-color: lightgray;
+    }
+</style>
 
 <div class="container py-5">
     <div class="row">

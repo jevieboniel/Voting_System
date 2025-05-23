@@ -2,7 +2,7 @@
 
 <style>
     body {
-        background-color: #e3f2fd; /* Softer blue background */
+        background-color: lightgray; /* Softer blue background */
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 

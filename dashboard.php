@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: skyblue;
+        background-color: lightgray;
     }
     .custom-menu {
         z-index: 1000;

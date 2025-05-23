@@ -50,8 +50,7 @@
 					<div class="text-center">
 
 						<small><b>Your Vote for</b></small>	
-						<h3><b><?php echo $title ?></b></h3>
-						<small><b><?php echo $description; ?></b></small>	
+						<h3><b><?php echo $title ?></b></h3>	
 					</div>
 					
 					<?php 
